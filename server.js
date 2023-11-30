@@ -34,6 +34,8 @@ app.get("/api/mahasiswa", (req, res) => {
     if (err) {
       console.error("Gagal mengambil data mahasiswa:", err);
       res.status(500).json({ error: "Gagal mengambil data mahasiswa" });
+    } else if (result.length === 0) {
+      res.status(404).json({ error: "Data mahasiswa tidak ditemukan" });
     } else {
       const dataMahasiswa = result;
       res.status(200).json(dataMahasiswa);
